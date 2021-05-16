@@ -31,7 +31,7 @@ export default function ShipDetails({ selectedShip: ship }: Props) {
       <Box color="white" fontWeight="semibold" letterSpacing="wide" fontSize="xs" textTransform="uppercase" pl="5">
         {ship.year_built}{' '}
         {ship.roles.map(role => (
-          <span key={role}>&bull; {role}</span>
+          <span key={role}> &bull; {role}</span>
         ))}
       </Box>
       <Box
