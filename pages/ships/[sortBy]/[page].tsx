@@ -1,6 +1,6 @@
 import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
-import { addPagesToPaths } from '../../../utils';
+import { addPagesToPaths, getShips } from '../../../utils';
 import { useRouter } from 'next/router';
 import { Grid } from '@chakra-ui/react';
 import { IShip } from '../../../interfaces/index';
@@ -10,8 +10,6 @@ import Pagination from '../../../components/Pagination';
 import ShipDetails from '../../../components/ShipDetails';
 
 const sortableValue = ['name', 'type', 'active', 'year_built', 'home_port'];
-// Not scalable! If new items get added to the api, it won't display all the pages in the pagination.
-const pages = ['1', '2', '3'];
 
 type Props = {
   ships: IShip[];
@@ -47,10 +45,12 @@ export default function ShipsPage({ ships, page, totalPages, sortBy, API_URL }: 
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const { totalPages } = await getShips({});
+
   return {
     paths: addPagesToPaths(
       sortableValue.map(item => ({ params: { sortBy: item } })),
-      pages,
+      totalPages,
     ),
     fallback: false,
   };
@@ -61,22 +61,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   const { API_URL } = process.env;
 
-  const res = await fetch('https://api.spacexdata.com/v4/ships/query', {
-    method: 'post',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-
-    body: JSON.stringify({
-      options: {
-        limit: 10,
-        page,
-        sort: sortBy,
-      },
-    }),
-  });
-  const ships = await res.json();
+  const ships = await getShips({ page: Number(page), sortBy: Array.isArray(sortBy) ? sortBy[0] : sortBy });
 
   return {
     props: {

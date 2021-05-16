@@ -25,7 +25,7 @@ describe('utils', () => {
     ];
 
     it('should add pages 1 to 3 to the paths', () => {
-      expect(addPagesToPaths(testPaths, ['1', '2', '3'])).toEqual([
+      expect(addPagesToPaths(testPaths, 3)).toEqual([
         { params: { sortBy: 'name', page: '1' } },
         { params: { sortBy: 'type', page: '1' } },
         { params: { sortBy: 'active', page: '1' } },
@@ -45,7 +45,7 @@ describe('utils', () => {
     });
 
     it('should add pages 1 to 2 to the paths', () => {
-      expect(addPagesToPaths(testPaths, ['1', '2'])).toEqual([
+      expect(addPagesToPaths(testPaths, 2)).toEqual([
         { params: { sortBy: 'name', page: '1' } },
         { params: { sortBy: 'type', page: '1' } },
         { params: { sortBy: 'active', page: '1' } },

@@ -46,7 +46,6 @@ password: test123
 - In the way the authentication is currently set up, when the page reloads the user has to login again (unless they've selected "Remember me" on the login page). Since its SSR, changing to a new page (e.g. sorting the ships; using the pagination feature) will redirect to the login page. Please, **to test the pagination and sorting feature, select "Remember me" when you log in**.
 - Remove Cumulative Layout Shift (CLS)
 - Add loading states
-- Figured out a way to make the pagination scalable.
 - Improve color contrast for a11y.
 
 ## Objectives:
