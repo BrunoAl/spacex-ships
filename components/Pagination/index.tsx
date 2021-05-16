@@ -23,6 +23,9 @@ export default function Pagination({ totalPages, currentPage, sortBy }: Props) {
 
   return (
     <Box mt="5" ml="5">
+      <Text mt="2" mb="2">
+        Page: {currentPage} / {totalPages}
+      </Text>
       <Button disabled={currentPage === 1} mr="5" onClick={handlePrevPage}>
         Prev
       </Button>
@@ -30,9 +33,6 @@ export default function Pagination({ totalPages, currentPage, sortBy }: Props) {
       <Button disabled={currentPage === totalPages} onClick={handleNextPage}>
         Next
       </Button>
-      <Text mt="2">
-        Page: {currentPage} / {totalPages}
-      </Text>
     </Box>
   );
 }
