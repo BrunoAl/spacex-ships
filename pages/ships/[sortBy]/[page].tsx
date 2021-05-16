@@ -34,7 +34,7 @@ export default function ShipsPage({ ships, page, totalPages, sortBy }: Props) {
   return (
     <div>
       <Header />
-      <Grid templateColumns="repeat(2, 1fr)">
+      <Grid templateColumns="repeat(2, 1fr)" height="100vh">
         <div>
           <Ships ships={ships} setSelectedShip={setSelectedShip} sortBy={sortBy} />
           <Pagination currentPage={Number(page)} totalPages={totalPages} sortBy={sortBy} />
