@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Deployed version
 
-https://spacex-ships-three.vercel.app/login
+https://spacex-ships-three.vercel.app/
 
 ## Getting Started
 
