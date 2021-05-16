@@ -50,7 +50,7 @@ export default function ShipDetails({ selectedShip: ship, API_URL }: Props) {
         ))}
       </Box>
       {launchesWikipedia.length > 0 && (
-        <Box color="white" fontWeight="semibold" letterSpacing="wide" fontSize="xs" pl="5" mt="10">
+        <Box color="white" fontWeight="semibold" letterSpacing="wide" fontSize="xs" pl="5" mt="5">
           Launches:
           <UnorderedList>
             {[...new Set(launchesWikipedia)].map(link => (
