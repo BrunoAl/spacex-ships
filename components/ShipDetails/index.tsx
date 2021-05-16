@@ -28,7 +28,7 @@ export default function ShipDetails({ selectedShip: ship, API_URL }: Props) {
 
   const { data: launchesData } = useSWR(`${API_URL}/launches${launchesQuery}`, fetcher);
 
-  const { launches = [] }: { launches } = launchesData || {};
+  const { launches = [] } = launchesData || {};
 
   const launchesWikipedia: [] = launches && launches.length > 0 ? launches.map(launch => launch.links.wikipedia) : [];
 

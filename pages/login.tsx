@@ -9,10 +9,10 @@ const fakeCredentials = {
 };
 
 export default function Login() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [rememberMe, setRememberMe] = React.useState(false);
-  const [isCredentialInvalid, setIsCredentialInvalid] = React.useState(false);
+  const [email, setEmail] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
+  const [rememberMe, setRememberMe] = React.useState<boolean>(false);
+  const [isCredentialInvalid, setIsCredentialInvalid] = React.useState<boolean>(false);
 
   const router = useRouter();
 

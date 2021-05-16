@@ -4,7 +4,9 @@ export function isEmailValid(email: string): boolean {
   return re.test(email);
 }
 
-export function addPagesToPaths(paths: { params: object }[], pages: string[]): object[] {
+type addPagesToPathsReturnType = { params: { sortBy: string; page?: string } }[];
+
+export function addPagesToPaths(paths: { params: object }[], pages: string[]): addPagesToPathsReturnType {
   return pages.reduce((acc, page) => {
     return [...acc, ...paths.map(path => ({ ...path, params: { ...path.params, page } }))];
   }, []);
