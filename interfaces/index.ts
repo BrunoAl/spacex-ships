@@ -6,4 +6,5 @@ export interface IShip {
   type: string;
   active: boolean;
   home_port: string;
+  launches: string[];
 }

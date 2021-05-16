@@ -1,11 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-import { Box, Flex, Text, Center } from '@chakra-ui/react';
+import useSWR from 'swr';
+import { Box, Flex, Text, UnorderedList, ListItem, Link } from '@chakra-ui/react';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 import { IShip } from '../../interfaces';
 
 type Props = {
   selectedShip: IShip;
 };
+
+const fetcher = url => fetch(url).then(res => res.json());
 
 export default function ShipDetails({ selectedShip: ship }: Props) {
   if (!ship)
@@ -16,6 +20,16 @@ export default function ShipDetails({ selectedShip: ship }: Props) {
         </Text>
       </Flex>
     );
+
+  const launchesQuery = ship.launches.reduce((acc, launch) => {
+    return `${acc}launches[]=${launch}&`;
+  }, '?');
+
+  const { data: launchesData } = useSWR(`http://localhost:3000/api/launches${launchesQuery}`, fetcher);
+
+  const { launches = [] }: { launches } = launchesData || {};
+
+  const launchesWikipedia: [] = launches && launches.length > 0 ? launches.map(launch => launch.links.wikipedia) : [];
 
   return (
     <Flex bg="gray.700" flexDir="column" height="100vh">
@@ -34,17 +48,22 @@ export default function ShipDetails({ selectedShip: ship }: Props) {
           <span key={role}> &bull; {role}</span>
         ))}
       </Box>
-      <Box
-        color="white"
-        fontWeight="semibold"
-        letterSpacing="wide"
-        fontSize="xs"
-        textTransform="uppercase"
-        pl="5"
-        mt="10"
-      >
-        Launches: TODO
-      </Box>
+      {launchesWikipedia.length > 0 && (
+        <Box color="white" fontWeight="semibold" letterSpacing="wide" fontSize="xs" pl="5" mt="10">
+          Launches:
+          <UnorderedList>
+            {launchesWikipedia.map(link => (
+              <ListItem key={link}>
+                {
+                  <Link href={link} isExternal>
+                    {link} <ExternalLinkIcon mx="2px" />
+                  </Link>
+                }
+              </ListItem>
+            ))}
+          </UnorderedList>
+        </Box>
+      )}
     </Flex>
   );
 }

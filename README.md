@@ -43,7 +43,6 @@ password: test123
 ## TODO:
 
 - Mobile version
-- Request the ship launches and render them on the ship details.
 - In the way the authentication is currently set up, when the page reloads the user has to login again (unless they've selected "Remember me" on the login page). Since its SSR, changing to a new page (e.g. sorting the ships; using the pagination feature) will redirect to the login page. Please, **to test the pagination and sorting feature, select "Remember me" when you log in**.
 - Remove Cumulative Layout Shift (CLS)
 - Add loading states
@@ -81,4 +80,4 @@ password: test123
 
 - [x] Displays details about the selected ship from the table, by clicking 'view' button from the details column.
 - [x] It should contain ship's name, year built, roles and image if it's available. If an image is not available, the placeholder image should be rendered.
-- [ ] Displays 'launches' list that contains urls to wikipeadia articles about the launches ship was apart of
+- [x] Displays 'launches' list that contains urls to wikipeadia articles about the launches ship was apart of
