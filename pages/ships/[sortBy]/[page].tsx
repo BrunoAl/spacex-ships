@@ -2,7 +2,7 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import { addPagesToPaths } from '../../../utils';
 import { useRouter } from 'next/router';
-import { Grid, Container } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 import { IShip } from '../../../interfaces/index';
 import Ships from '../../../components/Ships';
 import Header from '../../../components/Header';
