@@ -53,7 +53,7 @@ export default function ShipDetails({ selectedShip: ship, API_URL }: Props) {
         <Box color="white" fontWeight="semibold" letterSpacing="wide" fontSize="xs" pl="5" mt="10">
           Launches:
           <UnorderedList>
-            {launchesWikipedia.map(link => (
+            {[...new Set(launchesWikipedia)].map(link => (
               <ListItem key={link}>
                 {
                   <Link href={link} isExternal>
