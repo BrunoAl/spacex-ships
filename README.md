@@ -81,7 +81,7 @@ password: test123
 - [x] It should contain ship's name, year built, roles and image if it's available. If an image is not available, the placeholder image should be rendered.
 - [x] Displays 'launches' list that contains urls to wikipeadia articles about the launches ship was apart of
 
-## Others
+### Others
 
 - [x] All styling should be in a separate (s)css file.
 - [x] Bonus points for using modern Javascript ES6 features, like destructuring, template literals and arrow functions.
