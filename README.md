@@ -81,3 +81,11 @@ password: test123
 - [x] Displays details about the selected ship from the table, by clicking 'view' button from the details column.
 - [x] It should contain ship's name, year built, roles and image if it's available. If an image is not available, the placeholder image should be rendered.
 - [x] Displays 'launches' list that contains urls to wikipeadia articles about the launches ship was apart of
+
+## Others
+
+- [x] All styling should be in a separate (s)css file.
+- [x] Bonus points for using modern Javascript ES6 features, like destructuring, template literals and arrow functions.
+- [x] Bonus points for writing a unit test(s)
+- [x] Code structuring and readability is important, leave comments if you have parts of the code that aren't very descriptive by itself.
+- [x] 2 hard requirements are React and Typescript, the rest is freedom of choice.
