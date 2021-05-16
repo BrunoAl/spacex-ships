@@ -18,9 +18,10 @@ type Props = {
   page: number;
   totalPages: number;
   sortBy: string;
+  API_URL: string;
 };
 
-export default function ShipsPage({ ships, page, totalPages, sortBy }: Props) {
+export default function ShipsPage({ ships, page, totalPages, sortBy, API_URL }: Props) {
   const [selectedShip, setSelectedShip] = React.useState<IShip | null>(null);
 
   const router = useRouter();
@@ -39,7 +40,7 @@ export default function ShipsPage({ ships, page, totalPages, sortBy }: Props) {
           <Ships ships={ships} setSelectedShip={setSelectedShip} sortBy={sortBy} />
           <Pagination currentPage={Number(page)} totalPages={totalPages} sortBy={sortBy} />
         </div>
-        <ShipDetails selectedShip={selectedShip} />
+        <ShipDetails selectedShip={selectedShip} API_URL={API_URL} />
       </Grid>
     </div>
   );
@@ -57,6 +58,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async context => {
   const { sortBy, page } = context.params;
+
+  const { API_URL } = process.env;
 
   const res = await fetch('https://api.spacexdata.com/v4/ships/query', {
     method: 'post',
@@ -81,6 +84,7 @@ export const getStaticProps: GetStaticProps = async context => {
       totalPages: ships.totalPages,
       page,
       sortBy,
+      API_URL,
     },
   };
 };

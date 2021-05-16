@@ -7,11 +7,12 @@ import { IShip } from '../../interfaces';
 
 type Props = {
   selectedShip: IShip;
+  API_URL: string;
 };
 
 const fetcher = url => fetch(url).then(res => res.json());
 
-export default function ShipDetails({ selectedShip: ship }: Props) {
+export default function ShipDetails({ selectedShip: ship, API_URL }: Props) {
   if (!ship)
     return (
       <Flex bg="gray.700" justifyItems="center">
@@ -25,7 +26,7 @@ export default function ShipDetails({ selectedShip: ship }: Props) {
     return `${acc}launches[]=${launch}&`;
   }, '?');
 
-  const { data: launchesData } = useSWR(`http://localhost:3000/api/launches${launchesQuery}`, fetcher);
+  const { data: launchesData } = useSWR(`${API_URL}/launches${launchesQuery}`, fetcher);
 
   const { launches = [] }: { launches } = launchesData || {};
 
