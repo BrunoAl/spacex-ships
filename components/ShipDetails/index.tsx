@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Image, Box, Flex, Text, Center } from '@chakra-ui/react';
+import Image from 'next/image';
+import { Box, Flex, Text, Center } from '@chakra-ui/react';
 import { IShip } from '../../interfaces';
 
 type Props = {
@@ -18,7 +19,12 @@ export default function ShipDetails({ selectedShip: ship }: Props) {
 
   return (
     <Flex bg="gray.700" flexDir="column" height="100vh">
-      <Image src={ship.image} alt={ship.name} fallbackSrc="https://via.placeholder.com/500" />
+      {ship.image ? (
+        <Image src={ship.image} alt={ship.name} width={500} height={500} />
+      ) : (
+        <Image src={'https://via.placeholder.com/500'} alt="placeholder" width={500} height={500} />
+      )}
+
       <Box mt="5" fontWeight="semibold" as="h2" lineHeight="tight" isTruncated pl="5" color="whitesmoke">
         {ship.name}
       </Box>
