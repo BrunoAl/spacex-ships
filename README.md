@@ -48,6 +48,7 @@ password: test123
 - Remove Cumulative Layout Shift (CLS)
 - Add loading states
 - Figured out a way to make the pagination scalable.
+- Improve color contrast for a11y.
 
 ## Objectives:
 
