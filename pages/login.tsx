@@ -49,7 +49,7 @@ export default function Login() {
       <Flex direction="column" background="gray.200" p={12} rounded={6} w="25rem">
         <Heading mb={6}>Login</Heading>
         <form onSubmit={onSubmit}>
-          <FormControl id="first-name" isRequired>
+          <FormControl isRequired>
             <FormLabel>Enter your email address</FormLabel>
             <Input
               placeholder="some@email.com"
@@ -61,7 +61,7 @@ export default function Login() {
               isInvalid={!isEmailValid(email) && email !== ''}
             />
           </FormControl>
-          <FormControl id="first-name" isRequired>
+          <FormControl isRequired>
             <FormLabel>Enter your password</FormLabel>
             <Input
               placeholder="********"
